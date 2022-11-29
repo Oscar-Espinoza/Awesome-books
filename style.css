@@ -24,11 +24,12 @@
 }
 
 .pair-bg {
-  background: #fff;
+  background: rgb(204, 203, 203);
 }
 
 .odd-bg {
-  background: rgb(204, 203, 203);
+  background: #fff;
+  
 }
 
 .add-book-form {
