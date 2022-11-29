@@ -26,8 +26,8 @@ const remove = (removedBook) => {
 
 const addBookStorage = (title, author, id) => {
   booksArr.push({
-    title, 
-    author, 
+    title,
+    author,
     id,
   });
   localStorage.setItem('books', JSON.stringify(booksArr));
