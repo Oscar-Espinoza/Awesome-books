@@ -1,4 +1,6 @@
+/* eslint-disable */
 import initialBooks from './books.json' assert {type: 'json'};
+/* eslint-enable */ 
 const booksListEl = document.getElementById('books-list');
 if (localStorage.getItem('books') === null) {
   localStorage.setItem('books', JSON.stringify(initialBooks));
