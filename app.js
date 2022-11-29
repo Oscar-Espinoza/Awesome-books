@@ -1,5 +1,16 @@
-/* eslint-disable */
-import initialBooks from './books.json' assert {type: 'json'};
+
+const initialBooks = [
+  {
+    "id": 0,
+    "title": "book1",
+    "author": "author1"
+  },
+  {
+    "id": 1,
+    "title": "book2",
+    "author": "author2"
+  }
+]
 const booksListEl = document.getElementById('books-list');
 if (localStorage.getItem('books') === null) {
   localStorage.setItem('books', JSON.stringify(initialBooks));
