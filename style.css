@@ -2,3 +2,48 @@
   margin: 0;
   padding: 0;
 }
+
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.books-list {
+  list-style: none;
+  border: 2px #000000 solid;
+  width: 100%;
+}
+
+.book {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.pair-bg {
+  background: #fff;
+}
+
+.odd-bg {
+  background: rgb(204, 203, 203);
+}
+
+.add-book-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  gap: 10px;
+}
+
+.add-book-form input {
+  width: 100%;
+}
+
+.add-book-form #add-book-btn {
+  width: auto;
+  align-self: flex-end;
+}
