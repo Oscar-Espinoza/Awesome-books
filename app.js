@@ -10,7 +10,8 @@ const initialBooks = [
     "title": "book2",
     "author": "author2"
   }
-]
+];
+
 const booksListEl = document.getElementById('books-list');
 if (localStorage.getItem('books') === null) {
   localStorage.setItem('books', JSON.stringify(initialBooks));
