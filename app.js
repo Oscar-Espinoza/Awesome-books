@@ -1,4 +1,4 @@
-/* eslint-disable max-classes-per-file class-methods-use-this */
+/* eslint-disable max-classes-per-file, class-methods-use-this */
 let currentMaxId = 0;
 let booksArr = JSON.parse(localStorage.getItem('books'));
 const booksList = document.getElementById('books-list');
@@ -22,7 +22,7 @@ class Book {
         } else {
           booksList.children[i].className = 'book odd-bg';
         }
-      };
+      }
     }
   }
 
@@ -56,7 +56,6 @@ class Book {
   }
 }
 
-
 const initialBooks = [
   new Book(0, 'book1', 'author1'),
   new Book(1, 'book2', 'author2'),
@@ -66,10 +65,10 @@ const createList = () => {
   if (booksArr === null || booksArr.length === 0) {
     booksArr = initialBooks;
     localStorage.setItem('books', JSON.stringify(booksArr));
-  };
+  }
   currentMaxId = booksArr.length - 1;
   booksArr.forEach((book) => {
-    book = new Book(book.id, book.title, book.author)
+    book = new Book(book.id, book.title, book.author);
     book.addBookToDom();
   });
 };
@@ -79,9 +78,9 @@ document.getElementById('add-book-btn').addEventListener('click', () => {
   const author = document.getElementById('author').value;
   const id = currentMaxId + 1;
   const newBook = new Book(id, title, author);
-  newBook.addBookToDom()
-  newBook.addBookStorage()
-  currentMaxId += 1
+  newBook.addBookToDom();
+  newBook.addBookStorage();
+  currentMaxId += 1;
 });
 
 createList();
