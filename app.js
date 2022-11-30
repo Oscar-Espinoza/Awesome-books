@@ -1,37 +1,28 @@
 /* eslint-disable max-classes-per-file */
-let currentMaxId = 0
+let currentMaxId = 0;
+let booksArr = JSON.parse(localStorage.getItem('books'));
+const booksList = document.getElementById('books-list');
+
 class Book {
   constructor(id, title, author) {
     this.id = id;
     this.title = title;
     this.author = author;
   }
-}
 
-const initialBooks = [
-  new Book(0, 'book1', 'author1'),
-  new Book(1, 'book2', 'author2'),
-];
-
-var booksArr = JSON.parse(localStorage.getItem('books'));
-
-const booksList = document.getElementById('books-list');
-
-class Methods {
-  remove() {
-    const bookIndex = Array.from(booksList.children).indexOf(this);
+  remove(thisBook) {
+    const bookIndex = Array.from(booksList.children).indexOf(thisBook);
     booksArr = booksArr.filter((book) => book !== booksArr[bookIndex]);
     localStorage.setItem('books', JSON.stringify(booksArr));
-    booksList.removeChild(this);
+    booksList.removeChild(thisBook);
     if (bookIndex !== 0 && bookIndex < booksArr.length) {
-      for (let i = bookIndex; i < booksArr.length; i++) {
+      for (let i = bookIndex; i < booksArr.length; i += 1) {
         if (i % 2 === 0) {
-          booksList.children[i].className = 'book pair-bg'
+          booksList.children[i].className = 'book pair-bg';
         } else {
-          booksList.children[i].className = 'book odd-bg'
+          booksList.children[i].className = 'book odd-bg';
         }
-      }
-      
+      };
     }
   }
 
@@ -49,12 +40,12 @@ class Methods {
     const removeBtn = document.createElement('button');
     removeBtn.classList.add('remove-btn');
     removeBtn.innerText = 'remove';
-    newBook.classList.add('book');    
+    newBook.classList.add('book');
     newBook.setAttribute('id', this.id);
     newBook.innerHTML = `
     <p class="book-author">"${this.title}" by ${this.author}</p>
     `;
-    removeBtn.addEventListener('click', () => bookMethods.remove.call(newBook));
+    removeBtn.addEventListener('click', () => this.remove(newBook));
     newBook.appendChild(removeBtn);
     booksList.appendChild(newBook);
     if (Array.from(booksList.children).indexOf(newBook) % 2 === 0) {
@@ -65,7 +56,11 @@ class Methods {
   }
 }
 
-const bookMethods = new Methods();
+
+const initialBooks = [
+  new Book(0, 'book1', 'author1'),
+  new Book(1, 'book2', 'author2'),
+];
 
 const createList = () => {
   if (booksArr === null || booksArr.length === 0) {
@@ -74,22 +69,19 @@ const createList = () => {
   };
   currentMaxId = booksArr.length - 1;
   booksArr.forEach((book) => {
-    bookMethods.addBookToDom.call(book);
+    book = new Book(book.id, book.title, book.author)
+    book.addBookToDom();
   });
 };
-
-document.querySelectorAll('remove-btn').forEach((removeBtn) => {
-  removeBtn.addEventListener('click', bookMethods.removeBook.call(this.parentNode));
-});
 
 document.getElementById('add-book-btn').addEventListener('click', () => {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const id = currentMaxId + 1;
   const newBook = new Book(id, title, author);
-  bookMethods.addBookToDom.call(newBook);
-  bookMethods.addBookStorage.call(newBook);
-  currentMaxId++
+  newBook.addBookToDom()
+  newBook.addBookStorage()
+  currentMaxId += 1
 });
 
 createList();
