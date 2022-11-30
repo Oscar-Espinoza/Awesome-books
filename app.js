@@ -1,4 +1,4 @@
-/* eslint-disable max-classes-per-file */
+/* eslint-disable max-classes-per-file class-methods-use-this */
 let currentMaxId = 0;
 let booksArr = JSON.parse(localStorage.getItem('books'));
 const booksList = document.getElementById('books-list');
