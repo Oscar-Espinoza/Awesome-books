@@ -83,10 +83,18 @@ document.getElementById('add-book-btn').addEventListener('click', () => {
   currentMaxId += 1;
 });
 
-const createList = () => {
-  booksArr.forEach((book) => {
-    addBookToDom(book.title, book.author, book.id);
+document.querySelectorAll('.nav-link').forEach((navLink) => {
+  navLink.addEventListener('click', () => {
+    if (!navLink.classList.contains('active')) {
+      document.querySelectorAll('.active').forEach((element) => {
+        element.classList.remove('active');
+      });
+      const elementId = navLink.innerHTML.toLowerCase();
+      const element = document.getElementById(elementId);
+      element.classList.add('active');
+      navLink.classList.add('active');
+    }
   });
-};
+});
 
 createList();
