@@ -12,14 +12,14 @@ const initialBooks = [
 ];
 
 const booksListEl = document.getElementById('books-list');
-if (localStorage.getItem('books') === null) {
+let booksArr = JSON.parse(localStorage.getItem('books'));
+if (booksArr === null || booksArr.length === 0) {
   localStorage.setItem('books', JSON.stringify(initialBooks));
+  booksArr = initialBooks
 }
 
-let booksArr = JSON.parse(localStorage.getItem('books'));
-
 const remove = (removedBook) => {
-  booksArr = booksArr.filter((book) => book.id !== removedBook.id);
+  booksArr = booksArr.filter((book) => book.id !== parseInt(removedBook.id));
   localStorage.setItem('books', JSON.stringify(booksArr));
   booksListEl.removeChild(removedBook);
 };
@@ -46,12 +46,6 @@ const addBookToDom = (title, author, index) => {
   booksListEl.appendChild(newBookEl);
 };
 
-const createList = () => {
-  booksArr.forEach((book) => {
-    addBookToDom(book.title, book.author, book.id);
-  });
-};
-
 document.querySelectorAll('remove-btn').forEach((removeBtn) => {
   removeBtn.addEventListener('click', remove(removeBtn));
 });
@@ -63,5 +57,11 @@ document.getElementById('add-book').addEventListener('click', () => {
   addBookToDom(title, author, id);
   addBookStorage(title, author, id);
 });
+
+const createList = () => {
+  booksArr.forEach((book) => {
+    addBookToDom(book.title, book.author, book.id);
+  });
+};
 
 createList();
