@@ -15,11 +15,12 @@ const booksListEl = document.getElementById('books-list');
 let booksArr = JSON.parse(localStorage.getItem('books'));
 if (booksArr === null || booksArr.length === 0) {
   localStorage.setItem('books', JSON.stringify(initialBooks));
-  booksArr = initialBooks
+  booksArr = initialBooks;
 }
 
 const remove = (removedBook) => {
-  booksArr = booksArr.filter((book) => book.id !== parseInt(removedBook.id));
+  const bookId = parseInt(removedBook.id, 10);
+  booksArr = booksArr.filter((book) => book.id !== bookId);
   localStorage.setItem('books', JSON.stringify(booksArr));
   booksListEl.removeChild(removedBook);
 };
