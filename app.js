@@ -83,4 +83,10 @@ document.getElementById('add-book-btn').addEventListener('click', () => {
   currentMaxId += 1;
 });
 
+const createList = () => {
+  booksArr.forEach((book) => {
+    addBookToDom(book.title, book.author, book.id);
+  });
+};
+
 createList();
