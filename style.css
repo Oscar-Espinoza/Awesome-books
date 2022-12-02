@@ -3,18 +3,71 @@
   padding: 0;
 }
 
-.container {
-  padding: 20px;
+body {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Nav-bar */
+
+header {
+  padding-top: 5px;
+}
+
+.nav-bar {
   display: flex;
+  justify-content: space-between;
+  padding: 5px 20px;
+  border: 2px #000 solid;
+  margin: 0 10px 0 10px;
+}
+
+.links-list {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+
+.nav-link.active {
+  color: orangered;
+}
+
+.middle-link {
+  border-right: #000 1px solid;
+  border-left: #000 1px solid;
+  padding: 0 10px;
+}
+
+/* books List */
+
+.container {
+  display: none;
+}
+
+.container.active {
+  display: flex;
+  padding: 40px 20px;
   flex-direction: column;
   gap: 10px;
   align-items: center;
+}
+
+.list-title {
+  padding-bottom: 20px;
 }
 
 .books-list {
   list-style: none;
   border: 2px #000 solid;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .book {
@@ -31,19 +84,52 @@
   background: #fff;
 }
 
+/* Add book */
+
 .add-book-form {
   display: flex;
   flex-direction: column;
   width: 50%;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
+}
+
+.form-title {
+  padding-bottom: 50px;
 }
 
 .add-book-form input {
   width: 100%;
+  padding: 10px;
 }
 
 .add-book-form #add-book-btn {
   width: auto;
   align-self: flex-end;
+  padding: 5px 10px;
+}
+
+/* Contact */
+
+.container#contact {
+  gap: 30px;
+}
+
+.contact-title {
+  padding-bottom: 20px;
+}
+
+/* Footer */
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+footer .copyright {
+  border: 2px #000 solid;
+  padding: 5px 20px;
+  margin: 0 10px;
 }

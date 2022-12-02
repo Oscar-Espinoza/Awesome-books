@@ -8,18 +8,45 @@
   <title>Document</title>
 </head>
 <body>
-  <section class="container">
-    <h1 class="title">Awesome Books</h1>
+  <header>
+    <nav class="nav-bar">
+      <h2 class="nav-title">Awesome Books</h2>
+      <ul class="links-list">
+        <li class="nav-link active">List</li>
+        <li class="nav-link middle-link">Add New</li>
+        <li class="nav-link">Contact</li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="container active" id="list">
+    <h1 class="list-title">All awesome books</h1>
     <ul class="books-list" id="books-list">
     </ul>
+  </section>
+
+  <section class="container" id="add new">
     <form action="push" class="add-book-form">
-      <h2>Add a new book</h2>
-      <input type="text" name="title" id="title">
-      <input type="text" name="author" id="author">
+      <h2 class="form-title">Add a new book</h2>
+      <input type="text" placeholder="Title" name="title" id="title">
+      <input type="text" placeholder="Author" name="author" id="author">
       <input type="button" value="Add book" id="add-book-btn">
     </form>
   </section>
 
+  <section class="container" id="contact">
+    <h2 class="contact-title">Contact information</h2>
+    <p class="contact-description">Do you have any questions or you just want to say "Hello"? <br> You can just reach out to us!</p>
+    <ul class="contact-forms">
+      <li class="contact-form">Our e-mail email@email.com</li>
+      <li class="contact-form">Our phone number: +1 123456789</li>
+      <li class="contact-form">Our address: Streetname 1234, 85, city, Country</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p class="copyright">Copyright ...</p>
+  </footer>
 
   <script type="module" src="app.js"></script>
 </body>
